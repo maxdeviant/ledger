@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var api = require('../lib/api');
+var cli = require('commander');
+
+cli
+    .usage('create <name>')
+    .parse(process.argv);
+
+api.createProject(cli.args.join('-'));
