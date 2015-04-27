@@ -1,3 +1,7 @@
 #!/usr/bin/env node
 
-require('./../lib/cli.js');
+var api = require('../lib/api');
+
+api.init(function () {
+    require('./../lib/cli.js');
+});
