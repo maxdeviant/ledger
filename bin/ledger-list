@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var api = require('../lib/api');
+var cli = require('commander');
+
+cli
+    .usage('list')
+    .parse(process.argv);
+
+api.listProjects();
