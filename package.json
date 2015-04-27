@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/maxdeviant/ledger/issues"
   },
-  "homepage": "https://github.com/maxdeviant/ledger"
+  "homepage": "https://github.com/maxdeviant/ledger",
+  "dependencies": {
+    "commander": "^2.8.1"
+  }
 }
