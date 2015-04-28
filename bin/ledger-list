@@ -1,10 +1,42 @@
 #!/usr/bin/env node
 
 var api = require('../lib/api');
+var blessed = require('blessed');
 var cli = require('commander');
 
 cli
     .usage('list')
     .parse(process.argv);
 
-api.listProjects();
+var screen = blessed.screen({
+    autoPadding: true,
+    smartCSR: true
+});
+
+screen.title = 'Ledger';
+
+var table = blessed.table({
+    parent: screen,
+    top: 'center',
+    left: 'center',
+    width: '50%',
+    height: '50%'
+});
+
+screen.append(table);
+
+api.listProjects(function (projects) {
+    var data = [['Project', 'Hours']];
+
+    projects.forEach(function (project) {
+        data.push([project.name, project.hours])
+    });
+
+    table.setData(data);
+
+    screen.render();
+});
+
+screen.key(['escape', 'q', 'C-c'], function(ch, key) {
+    return process.exit(0);
+});
