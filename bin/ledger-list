@@ -29,7 +29,7 @@ api.listProjects(function (projects) {
     var data = [['Project', 'Hours']];
 
     projects.forEach(function (project) {
-        data.push([project.name, project.hours])
+        data.push([project.name, project.hours.toString()])
     });
 
     table.setData(data);
